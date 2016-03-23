@@ -1,8 +1,8 @@
 FROM podbox/debian
 
 # ------------------------------------------------------------------------ java8
-RUN (curl -L -k -b "oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u74-b02/server-jre-8u74-linux-x64.tar.gz | gunzip -c | tar x) \
- && mv /jdk1.8.0_74 /jdk
+RUN (curl -L -k -b "oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u77-b03/server-jre-8u77-linux-x64.tar.gz | gunzip -c | tar x) \
+ && mv /jdk1.8.0_77 /jdk
 
 ENV JAVA_HOME /jdk
 ENV JRE_HOME  $JAVA_HOME/jre
