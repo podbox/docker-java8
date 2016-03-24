@@ -4,6 +4,11 @@ FROM podbox/debian
 RUN (curl -L -k -b "oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u77-b03/server-jre-8u77-linux-x64.tar.gz | gunzip -c | tar x) \
  && mv /jdk1.8.0_77 /jdk
 
+RUN cd /tmp && curl -L -O -k -b "oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip \
+ && unzip jce_policy-8.zip \
+ && mv UnlimitedJCEPolicyJDK8/*.jar /jdk/jre/lib/security/ \
+ && rm -fR jce_policy-8.zip UnlimitedJCEPolicyJDK8
+
 ENV JAVA_HOME /jdk
 ENV JRE_HOME  $JAVA_HOME/jre
 ENV PATH $PATH:$JAVA_HOME/bin
