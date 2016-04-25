@@ -30,6 +30,7 @@ RUN apt-get -qq update \
  && ./configure --with-java-home=$JAVA_HOME --with-apr=/usr/local/apr --prefix=/usr \
  && make install \
 
- && apt-get -qq autoremove -y build-essential libssl-dev libpcre++-dev zlib1g-dev \
+ && apt-get -qq purge -y build-essential dpkg-dev g++ gcc libc6-dev make libssl-dev libpcre++-dev zlib1g-dev \
+ && apt-get -qq autoremove -y \
  && apt-get -qq clean \
  && rm -fR /tmp/* /apr-* /tomcat-native-*
