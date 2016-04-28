@@ -1,4 +1,13 @@
-FROM podbox/debian
+FROM ubuntu:xenial
+
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+
+RUN apt-get -qq update     \
+ && apt-get -qq upgrade -y \
+ && apt-get -qq install -y curl unzip
 
 # ------------------------------------------------------------------------ java8
 RUN (curl -L -k -b "oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u92-b14/server-jre-8u92-linux-x64.tar.gz | gunzip -c | tar x) \
